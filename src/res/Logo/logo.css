@@ -1,0 +1,142 @@
+.purse {
+    position: absolute;
+    left: 25px;
+    top: 20px;
+}
+.coin{
+    height:150px;
+    width:150px;
+    position:absolute;
+    transform-style:preserve-3d;
+    transform-origin:50%;
+    animation:spin 10s infinite;
+    animation-timing-function:linear
+}
+.coin .back,
+.coin .front{
+    position:absolute;
+    height:150px;
+    width:150px;
+    border-radius:50%;
+    overflow:hidden;
+    background-size:cover
+}
+.coin .back:after,
+.coin .front:after{
+    content:"";
+    position:absolute;
+    left:-150px;
+    bottom:100%;
+    display:block;
+    height:100px;
+    width:300px;
+    background:#fff;
+    opacity:.3;
+    animation:shine linear 5s infinite
+}
+.coin .front{
+    transform:translateZ(15px)
+}
+.coin .back{
+    transform:translateZ(0px) rotateY(180deg)
+}
+.coin .side{
+    transform:translateX(60px);
+    transform-style:preserve-3d;
+    backface-visibility:hidden
+}
+.coin .side .spoke{
+    height:150px;
+    width:30px;
+    position:absolute;
+    transform-style:preserve-3d;
+    backface-visibility:hidden
+}
+.coin .side .spoke:after,
+.coin .side .spoke:before{
+    content:'';
+    display:block;
+    height:15px;
+    width:15px;position:absolute;
+    transform:rotateX(84.375deg);
+    background:#7201d0;
+    background:linear-gradient(to bottom,#8903e2 0,#b301ca 74%,#6d02c3 75%,#9d00bc 100%);
+    background-size:100% 6.53447602px
+}
+.coin .side .spoke:before{
+    transform-origin:top center
+}
+.coin .side .spoke:after{
+    bottom:0;
+    transform-origin:center bottom
+}
+.coin .side .spoke:nth-child(16){
+    transform:rotateY(90deg) rotateX(180deg)
+}
+.coin .side .spoke:nth-child(15){
+    transform:rotateY(90deg) rotateX(168.75deg)
+}
+.coin .side .spoke:nth-child(14){
+    transform:rotateY(90deg) rotateX(157.5deg)
+}
+.coin .side .spoke:nth-child(13){
+    transform:rotateY(90deg) rotateX(146.25deg)
+}
+.coin .side .spoke:nth-child(12){
+    transform:rotateY(90deg) rotateX(135deg)
+}
+.coin .side .spoke:nth-child(11){
+    transform:rotateY(90deg) rotateX(123.75deg)
+}
+.coin .side .spoke:nth-child(10){
+    transform:rotateY(90deg) rotateX(112.5deg)
+}
+.coin .side .spoke:nth-child(9){
+    transform:rotateY(90deg) rotateX(101.25deg)
+}
+.coin .side .spoke:nth-child(8){
+    transform:rotateY(90deg) rotateX(90deg)
+}
+.coin .side .spoke:nth-child(7){
+    transform:rotateY(90deg) rotateX(78.75deg)
+}
+.coin .side .spoke:nth-child(6){
+    transform:rotateY(90deg) rotateX(67.5deg)
+}
+.coin .side .spoke:nth-child(5){
+    transform:rotateY(90deg) rotateX(56.25deg)
+}
+.coin .side .spoke:nth-child(4){
+    transform:rotateY(90deg) rotateX(45deg)
+}
+.coin .side .spoke:nth-child(3){
+    transform:rotateY(90deg) rotateX(33.75deg)
+}
+.coin .side .spoke:nth-child(2){
+    transform:rotateY(90deg) rotateX(22.5deg)
+}
+.coin .side .spoke:nth-child(1){
+    transform:rotateY(90deg) rotateX(11.25deg)
+}
+@keyframes spin{
+    from{
+        -webkit-transform:rotateY(0)
+    }
+    to{
+        -webkit-transform:rotateY(360deg)
+    }
+}
+.coin .front{
+    background-image:url('../image/coin-front.png')
+}
+.coin .back{
+    background-image:url('../image/coin-back.png')
+}
+@keyframes shine{
+    0%,15%{
+        transform:translateY(600px) rotate(-40deg);
+    }
+    50%{
+        transform:translateY(-300px) rotate(-40deg);
+    }
+}

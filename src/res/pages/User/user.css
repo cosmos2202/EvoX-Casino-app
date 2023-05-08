@@ -1,0 +1,34 @@
+.user-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10%;
+}
+.profile-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: aliceblue;
+}
+.user-page > p {
+  color:aliceblue
+}
+.profile-btn {
+    color: rgb(158, 158, 158);
+    width: 150px;
+    margin: 30px;
+    height: 60px;
+    background-color: #4d0091;
+    border-radius: 7px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  .profile-btn:hover {
+    background-color: #4d009134;
+  }
+h1 {
+    margin: 30px;
+}

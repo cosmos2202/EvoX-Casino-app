@@ -1,0 +1,72 @@
+.ui__form {
+    width: 670px;
+    padding: 60px;
+    border-radius: 7px;
+}
+
+/*.ui__form p {
+    font-size: 18px;
+    margin-bottom: 10px;    
+}
+.ui__form h3 {
+    font-size: 18px;
+    margin-bottom: 50px;
+}*/
+.ui__form h3 > span > .ui__form__content > span {
+    display: block;
+    font-size: 18px;
+}
+.ui__input {
+    width: 100%;
+    height: 60px; 
+}
+.ui__input__price input {
+    padding-right: 105px;
+    margin-bottom: 0;
+}
+.ui__input__author input {
+    background-size: 20px 20px;
+}
+
+.ui__input__wrapper {
+    position: relative;
+}
+
+.ui__input__asset {
+    color: wheat;
+}
+
+.ui__form__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ui__form__wrapper input {
+    margin-bottom: 0;
+}
+
+/*.ui__form__header {
+    margin-bottom: 45px;
+    text-align: left;
+}
+
+.ui__form__header h3 {
+    margin-bottom: 7px;
+}
+
+.ui__form__header p {
+    font-size: 18px;
+    opacity: 0.8;
+}*/
+
+.ui__form__switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.ui__form__switch p {
+    margin: 0;
+    margin-left: 10px;
+}

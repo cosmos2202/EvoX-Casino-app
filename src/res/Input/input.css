@@ -1,0 +1,46 @@
+.ui__input {
+    position: relative;
+}
+
+.ui__input__arrow {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.ui__input__select {
+
+    width: 100%;
+}
+
+.ui__input__background {
+    position: absolute;
+    top: 50%;
+    left: 22px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+}
+
+.ui__input__options {
+    position: absolute;
+    width: 100%;
+    bottom: -15px;
+    transform: translateY(100%);
+    left: 0;
+    background-color: wheat;
+    border: 1px solid #999999;
+    border-radius: 6px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+}
+
+.ui__input__options > * {
+    padding: 13px 0;
+    margin-bottom: 0;
+    cursor: pointer;
+}

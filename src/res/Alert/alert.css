@@ -1,0 +1,16 @@
+.ui__alert {
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: rgb(100, 100, 100);
+    border-radius: 20px;
+    color: aliceblue;
+    min-width: 300px;
+    min-height: 100px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+}

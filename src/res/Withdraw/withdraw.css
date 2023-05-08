@@ -1,0 +1,17 @@
+.withdraw {
+    display: flex;
+    margin-top: 20%;
+    color: aliceblue;
+}
+.withdraw_ui__submit-btn {
+    color: rgb(158, 158, 158);
+    width: 150px;
+    height: 60px;
+    background-color: #4d0091;
+    border-radius: 7px;
+    font-weight: 700;
+    margin: 40px;
+  }
+  .withdraw_ui__submit-btn:hover {
+    background-color: #4d009134;
+  }

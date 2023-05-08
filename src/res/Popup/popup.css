@@ -1,0 +1,30 @@
+.popup-background {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+}
+.popup-blur {
+    background: rgba(0, 0, 0, 0.5);
+}
+.popup_no-pointer {
+    pointer-events: none;
+}
+.popup__close {
+    position: fixed;
+    right: -5px;
+    top: -5px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.popup__close svg {
+        height: 60%;
+        fill: var(--icons-color);
+    }

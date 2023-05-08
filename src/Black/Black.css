@@ -1,0 +1,37 @@
+.Black {
+  text-align: center;
+  background-image: url(./Assets/PlayingCards/blackjack-table-5.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}
+
+.Black-body {
+  height: 86vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.profile-btn {
+  color: rgb(158, 158, 158);
+  width: 150px;
+  margin: 30px;
+  height: 60px;
+  background-color: #4d0091;
+  border-radius: 7px;
+  font-weight: 700;
+}
+.profile-btn:hover {
+  background-color: #4d009134;
+}
+.player_name {
+  color: rgb(68, 2, 94);
+  font-size: 6rem;
+  font-weight: bolder;
+}
