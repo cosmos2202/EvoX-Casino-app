@@ -12,6 +12,7 @@ import Login from "./res/pages/Setup/Login";
 import Registration from "./res/pages/Setup/Registration";
 import User from "./res/pages/User/User";
 import BackgroundMelody from './Roulette/sound/Fon.mp3';
+import Baccarat from './Baccarat/Baccarat';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
             <Route exact path="/roulette" element={<Roulette />} />
             <Route exact path="/slotmachinies" element={<SlotMachinies />} />
             <Route exact path="/black" element={<Black />} />
+            <Route exact path="/baccarat" element={<Baccarat />} />
           </Routes>
         </Suspense>
       </Router>

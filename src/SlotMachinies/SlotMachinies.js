@@ -7,17 +7,6 @@ import Win from "./sound/win.mp3";
 
 const SlotMachinies = () => {
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch('/api/data/getuser');
-      const userData = await response.json();
-      setUser(userData.result.nickname);
-      setBalance(userData.result.balance);
-      setToken(userData.result.token);
-      setJackpot(userData.result.jackpot_slots)
-    })();
-  }, []);
-
     const [user, setUser] = useState();
     const navigate = useNavigate();
     const [spin, setSpin] = useState(false);
@@ -29,7 +18,19 @@ const SlotMachinies = () => {
     const [realBet, setRealBet] = useState();
     const [jackpot, setJackpot] = useState();
     const [balance, setBalance] = useState();
-    const [token, setToken] = useState();    
+    const [token, setToken] = useState(); 
+    const [winning, setWinning] = useState(); 
+    
+    useEffect(() => {
+      (async () => {
+        const response = await fetch('/api/data/getuser');
+        const userData = await response.json();
+        setUser(userData.result.nickname);
+        setBalance(userData.result.balance);
+        setToken(userData.result.token);
+        setJackpot(userData.result.jackpot_slots)
+      })();
+    }, []);
     
     useEffect(() => {
         win()
@@ -238,7 +239,7 @@ const SlotMachinies = () => {
    
    function play() {
      if (ring3 > 1 || !spin) {
-       if (input <= balance && input >= 1) {
+       if (input <= balance && input >= 0.1) {
         playFruit()
          setRealBet(input)
          setSpin(true)
@@ -246,8 +247,9 @@ const SlotMachinies = () => {
          setRing2()
          setRing3()
          setBalance(balance - input)
-         setBalanceUser(token, balance - input)
+         minusBalanceUser(token, input)
          setJackpot(jackpot + (input / 2))
+         setJackpotAmount(token, jackpot + (input / 2))
          setTimeout(rand, 1500)
        } else {
          setPrice(10)
@@ -259,15 +261,19 @@ const SlotMachinies = () => {
      if (ring1 <= 50 && ring2 <= 50 && ring3 <= 50 && ring1 !== undefined) {
        setPrice(1)
        setBalance(balance + (realBet * 4))
+       setWinning(realBet * 4)
      } else if (ring1 > 50 && ring1 <= 75 && ring2 > 50 && ring2 <= 75 && ring3 > 50 && ring3 <= 75 && ring1 !== undefined) {
        setPrice(2)
        setBalance(balance + (realBet * 6))
+       setWinning(realBet * 6)
      } else if (ring1 > 75 && ring1 <= 95 && ring2 > 75 && ring2 <= 95 && ring3 > 75 && ring3 <= 95 && ring1 !== undefined) {
        setPrice(3)
        setBalance(balance + (realBet * 8))
+       setWinning(realBet * 8)
      } else if (ring1 > 95 && ring1 <= 100 && ring2 > 95 && ring2 <= 100 && ring3 > 95 && ring3 <= 100 && ring1 !== undefined) {
        setPrice(4)
        setBalance(balance + jackpot)
+       setWinning(jackpot)
        setJackpot(0)
        setJackpotAmount(token, 0)
      } else {
@@ -304,32 +310,44 @@ const SlotMachinies = () => {
    }
 
    useEffect(() => {
-    setJackpotAmount(token, jackpot)
     if(price > 0 && price < 5) {
-      setBalanceUser(token, balance);
+      plusBalanceUser(token, winning);
       playWin();
     } 
    }, [price])
 
     function numChecker(e) {
-        const value = e.target.value;
-        const regex = /^[0-9]+$/;
-        if (value.match(regex) && parseInt(value) >= 0) {
-            setInput(value);
+            const value = e.target.value;
+            const regex = /^[0-9.]+$/;
+            if (value.match(regex) && parseInt(value) >= 0) {
+                setInput(value);
+            }
         }
-    }
 
-    async function setBalanceUser(token, balance) {
-      await fetch('/api/data/setbalance', {
-        method: 'POST',
-        body: JSON.stringify({
-          token,
-          balance,
-        }),
-        headers: {
-          'Content-type': 'application/json',
-        },
-      });
+        async function plusBalanceUser (token, balance) {
+          await fetch('/api/data/plusbalance', {
+            method: "POST",
+            body: JSON.stringify({
+              token: token,
+              balance: balance
+            }),
+            headers: {
+                "Content-type": "application/json"
+            }
+          })
+      }
+    
+      async function minusBalanceUser (token, balance) {
+        await fetch('/api/data/minusbalance', {
+          method: "POST",
+          body: JSON.stringify({
+            token: token,
+            balance: balance
+          }),
+          headers: {
+              "Content-type": "application/json"
+          }
+        })
     }
 
     async function setJackpotAmount(token, jackpotAmount) {
@@ -348,7 +366,7 @@ const SlotMachinies = () => {
     return (
         <div className="fullSlot">
             <h1 className="casinoName">EvoX Casino</h1>
-            <h1 className="price">{"Jackpot: " + jackpot + " EvoX"}</h1>
+            <h1 className="price">{"Jackpot: " + ((jackpot * 100) / 100).toFixed(2) + " EvoX"}</h1>
             <div className="slot">
                 <div className="row">
                     {row1()}
@@ -367,8 +385,8 @@ const SlotMachinies = () => {
                 <input type="number" onChange={(e) => numChecker(e)} className="betInput" placeholder="set bet"></input>
                 <button className="spinButton" onClick={() => {play(); playButton()}}>Spin</button>
             </div>
-            <h1 className="price">Available cash: {balance} EvoX</h1>
-            <button onClick={() => {navigate("/user")}} className="buyMoreButton">{user}</button>
+            <h1 className="price">Available cash: {((balance * 100) / 100).toFixed(2)} EvoX</h1>
+            <button onClick={() => {navigate("/user")}} className="buyMoreButton">back to profile</button>
         </div>  
     )
 }

@@ -126,6 +126,7 @@ const Context = (props) => {
     }
 
   const play = () => {
+    minusBalanceUser (token, Number(totalBet.toFixed(2)))
     setHideBall(false)                                                                                                      // here we showed our ball and hid the active item's ball
     setShowItemBall(false)
     setbConState(true)
@@ -262,12 +263,12 @@ const Context = (props) => {
     if (profit > 0) {
       setWinnerEffect("gained")
       playWin()
+      plusBalanceUser (token, Number(profit.toFixed(2)))
     } else {
       setWinnerEffect("lost")
       playLoss()
     }
     setBalance(balance + profit)
-    setBalanceUser (token, balance + profit)   
   }
 
   const clearBet = () => {
@@ -505,7 +506,7 @@ const Context = (props) => {
           if (timer || confetti.length)
             return frame = requestAnimationFrame(loop);
 
-          svgContainer.current.removeChild(container);
+          if(svgContainer.current.removeChild !== null)svgContainer.current.removeChild(container);
           frame = undefined;
         });
       }
@@ -514,8 +515,8 @@ const Context = (props) => {
     if (animation) poof();
   });
 
-  async function setBalanceUser (token, balance) {
-      await fetch('/api/data/setbalance', {
+  async function plusBalanceUser (token, balance) {
+      await fetch('/api/data/plusbalance', {
         method: "POST",
         body: JSON.stringify({
           token: token,
@@ -526,6 +527,19 @@ const Context = (props) => {
         }
       })
   }
+
+  async function minusBalanceUser (token, balance) {
+    await fetch('/api/data/minusbalance', {
+      method: "POST",
+      body: JSON.stringify({
+        token: token,
+        balance: balance
+      }),
+      headers: {
+          "Content-type": "application/json"
+      }
+    })
+}
  
 return (
     <MyContext.Provider value={{ buttons, lastNums, chip, bet, selectChip, balance, setBalance, userModal, setUserModal, gain, winnerEffect, svgContainer, animation, fadeBtn, fadeBtn2, fadeBtn3, play, playable, setPlayable, bConState, rotate, setRotate, rotate2, hideBall, showItemBall, winnerNumber, clearBet, doubleBet, reBet }}>

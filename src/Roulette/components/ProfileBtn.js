@@ -1,19 +1,10 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import feature from "../sound/feature.mp3";
 
 const Profile_btn = () => {
-  const [user, setUser] = useState();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const getUser = async () => {
-      const response = await fetch("/api/data/getuser");
-      const userData = await response.json();
-      setUser(userData.result.nickname);
-    };
-    getUser();
-  }, []);
+  const navigate = useNavigate();
 
   function playFeature() {
     const featureMusic = new Audio(feature)
@@ -23,9 +14,7 @@ const Profile_btn = () => {
 
   return (
     <div>
-        <button className="user-profile" onClick={() => {navigate("/user"); playFeature()}}>
-          {user}
-        </button>
+        <button className="profile-btn user-profile" onClick={() => {navigate("/user"); playFeature()}}>back to profile</button>
     </div>
   );
 };

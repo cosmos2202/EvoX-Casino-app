@@ -13,7 +13,7 @@ const Header = (props) => {
 
   return (
     <div className="App-header">
-      <button className="profile-btn" onMouseUp={() => {navigate('/user'); playFeature()}}>{props.player}</button>
+      <button className="profile-btn" onMouseUp={() => {navigate('/user'); playFeature()}}>back to profile</button>
       <div>
         <div>Your Balance: {props.balance} EvoX</div>
         <div>Turn: {props.turn}</div>

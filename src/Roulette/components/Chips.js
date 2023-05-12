@@ -13,15 +13,32 @@ const Chips = () => {
         {id: "5", number: 100, color: "#6e43af"}
     ]
 
+    const littleChips = [
+        {id: "01", number: 0.1, color: "#204b60"},
+        {id: "02", number: 0.2, color: "#204b70"},
+        {id: "05", number: 0.5, color: "#204b80"}
+    ]
+
     return(
-        <div className={!bConState ? "chips-container" : "chips-container disabled-container"}>
-            {
-                chips.map(elm=>{
-                    return(
-                        <div key={elm.id} className={`chip-${elm.number} ${chip === elm.number ? "activeChip" : null}`} onClick={()=>selectChip(elm.number)}>{elm.number}</div>
-                    )
-                })
-            }
+        <div>
+            <div className={!bConState ? "chips-container-little" : "chips-container-little disabled-container"}>
+                {
+                    littleChips.map(elm=>{
+                        return(
+                            <div key={elm.id} className={`chip-${elm.id} ${chip === elm.number ? "activeChip" : null}`} onClick={()=>selectChip(elm.number)}>{elm.number}</div>
+                        )
+                    })
+                }
+            </div>
+            <div className={!bConState ? "chips-container" : "chips-container disabled-container"}>
+                {
+                    chips.map(elm=>{
+                        return(
+                            <div key={elm.id} className={`chip-${elm.number} ${chip === elm.number ? "activeChip" : null}`} onClick={()=>selectChip(elm.number)}>{elm.number}</div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }

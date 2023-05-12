@@ -61,7 +61,7 @@ function User() {
                     <h1>Hello {user}!</h1>
                 </div>
                 <div className="user-balance">
-                    <h1>Balance: {userBalance} EvoX</h1>
+                    <h1>Balance: {((userBalance * 100) / 100).toFixed(2)} EvoX</h1>
                 </div>
                 <div className="deposit">
                     <h1>Your address for adding funds to your balance: </h1>
@@ -79,7 +79,8 @@ function User() {
             <div>    
                 <button className="profile-btn" onMouseUp={() => {navigate('/roulette'); playFeature()}}>Roulette</button>
                 <button className="profile-btn" onMouseUp={() => {navigate('/slotmachinies'); playFeature()}}>Slot Machinies</button>
-                <button className="profile-btn" onMouseUp={() => {navigate('/black'); playFeature()}}>Blackjack </button>
+                <button className="profile-btn" onMouseUp={() => {navigate('/black'); playFeature()}}>Blackjack</button>
+                <button className="profile-btn" onMouseUp={() => {navigate('/baccarat'); playFeature()}}>Baccarat</button>
                 <button className="profile-btn" onMouseUp={() => {navigate('/withdraw'); playFeature()}}>Withdraw</button>
                 <button className="profile-btn" onClick={ExitProfile}>Exit Profile</button>
             </div>

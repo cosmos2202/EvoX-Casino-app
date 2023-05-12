@@ -7,6 +7,7 @@ import Chips from './components/Chips'
 import Balance from './components/Balance'
 import Board from './components/Board';
 import Confetti from './components/Confetti';
+import ProfileBtn from "./components/ProfileBtn";
 
 function Roulette() {
 
@@ -14,6 +15,7 @@ function Roulette() {
     <div className="roulette">
       <Context>
         <Balance />
+        <ProfileBtn />
         <UpperContainer />
         <BottomContainer />
       </Context>
