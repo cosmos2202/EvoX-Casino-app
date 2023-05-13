@@ -12,7 +12,6 @@ form{
 }
 .ui__form__header {
     margin-bottom: 45px;
-    text-align: left;
   }
   .ui__form__header h3 {
     display: flex;
@@ -55,3 +54,12 @@ form{
     height: 80%;
     color: antiquewhite;
 }  
+
+@media screen and (max-width: 550px) { 
+  .ui__form__header h3 {
+    font-size: 2rem;
+  }
+  .ui__form__header p {
+    font-size: 1rem;
+  }
+}

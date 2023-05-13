@@ -717,7 +717,7 @@ function Baccarat() {
           <h3>{playerscore}</h3>
         </Box>
         <Box color = {shades.neutral[100]} display = "flex" alignItems = "center" height = "50px" marginTop={'-25px'}>
-          <h3>Balance: {((balance * 100) / 100).toFixed(2)} EvoX</h3>
+          <h3 className='balance-mobile'>Balance: {((balance * 100) / 100).toFixed(2)} EvoX</h3>
         </Box>
         <Box color = {shades.neutral[100]} display = "flex" alignItems = "center" height = "50px">
           <h3>{bankerscore}</h3>

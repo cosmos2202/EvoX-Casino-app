@@ -6,9 +6,3 @@
   justify-content: space-evenly;
   flex-direction: row;
 }
-
-@media only screen and (max-width: 600px) {
-  .App-header {
-    flex-direction: column;
-  }
-}

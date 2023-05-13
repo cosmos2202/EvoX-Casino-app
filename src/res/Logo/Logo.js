@@ -2,7 +2,7 @@ import "./logo.css";
 
 const Logo = () => {
     return (
-      <div>
+      <div className="display_logo">
         <a href="https://evolution-network.org/" target="_blank" rel="noreferrer">
           <div className="purse">
             <div className="coin">

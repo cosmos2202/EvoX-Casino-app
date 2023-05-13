@@ -140,3 +140,10 @@
         transform:translateY(-300px) rotate(-40deg);
     }
 }
+
+@media screen and (max-width: 920px) { 
+    .display_logo {
+        display: none;
+    }
+
+  }

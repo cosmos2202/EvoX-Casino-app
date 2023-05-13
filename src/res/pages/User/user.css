@@ -32,3 +32,22 @@
 h1 {
     margin: 30px;
 }
+
+@media screen and (max-width: 920px) { 
+  h1 {
+    margin: 10px;
+    font-size: 16px;
+  }
+  .profile-btn {
+    margin: 5px;
+    height: 60px;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  } 
+}
+@media screen and (max-width: 1200px) {
+  .mobile_disable {
+    display: none;
+  }
+}

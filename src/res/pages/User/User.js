@@ -65,23 +65,23 @@ function User() {
                 </div>
                 <div className="deposit">
                     <h1>Your address for adding funds to your balance: </h1>
-                    <p>{userAddress}</p>
+                    <p className="mobile_disable">{userAddress}</p>
                     <button 
                       className="profile-btn" 
                       onMouseUp={() => {copyToClipboard(userAddress); playFeature()}}
                     >Copy Address</button>
                     <button 
-                      className="profile-btn" 
+                      className="profile-btn mobile_disable" 
                       onMouseUp={() => {Send(); playFeature()}}
                     >Go to Wallet</button>
                 </div>
             </div>
             <div>    
-                <button className="profile-btn" onMouseUp={() => {navigate('/roulette'); playFeature()}}>Roulette</button>
+                <button className="profile-btn mobile_disable" onMouseUp={() => {navigate('/roulette'); playFeature()}}>Roulette</button>
                 <button className="profile-btn" onMouseUp={() => {navigate('/slotmachinies'); playFeature()}}>Slot Machinies</button>
                 <button className="profile-btn" onMouseUp={() => {navigate('/black'); playFeature()}}>Blackjack</button>
                 <button className="profile-btn" onMouseUp={() => {navigate('/baccarat'); playFeature()}}>Baccarat</button>
-                <button className="profile-btn" onMouseUp={() => {navigate('/withdraw'); playFeature()}}>Withdraw</button>
+                <button className="profile-btn mobile_disable" onMouseUp={() => {navigate('/withdraw'); playFeature()}}>Withdraw</button>
                 <button className="profile-btn" onClick={ExitProfile}>Exit Profile</button>
             </div>
             <p>For all questions and suggestions, please contact the appropriate <a href="https://discord.gg/erYnAQf">discord</a> #casino.</p>

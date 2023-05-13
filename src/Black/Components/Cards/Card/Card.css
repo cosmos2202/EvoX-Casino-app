@@ -1,3 +1,10 @@
 .Card {
   margin-left: 10px;
 }
+
+@media screen and (max-width: 520px) { 
+  .Card {
+    width: 60px;
+    margin-left: -10px;
+  }
+}
