@@ -10,7 +10,7 @@ const LastNumbers = ()=> {
             {
                 lastNums.reverse().map((elm,index)=>{
                     return(
-                        index < 5 ? <div key={index} className={buttons.filter(elm2=>elm2.value === elm)[0].class}>{elm}</div> : null
+                        index < 8 ? <div key={index} className={buttons.filter(elm2=>elm2.value === elm)[0].class}>{elm}</div> : null
                     )
                 })
             }

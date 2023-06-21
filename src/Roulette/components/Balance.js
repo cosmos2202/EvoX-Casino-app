@@ -1,6 +1,5 @@
 import { useContext, memo } from "react";
 import { MyContext } from "./Context";
-import ProfileBtn from "./ProfileBtn";
 
 const Balance = () => {
 

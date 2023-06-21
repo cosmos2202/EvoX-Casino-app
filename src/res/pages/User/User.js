@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import './user.css';
-import feature from "../../../Black/Sound/feature.mp3"
+import feature from "../../../Black/Sound/feature.mp3";
+import Rules from "../../Rules/Rules";
+import { generalRules } from "../../Rules/generalRules";
 
 const checkBlockchainTransactions = async () => {
   await fetch('/api/data/getbalance');
@@ -13,9 +15,6 @@ function User() {
     const [user, setUser] = useState();
     const [userAddress, setUserAddress] = useState();
     const [userBalance, setUserBalance] = useState();
-
-  
-  
 
    useEffect(() => {
       const getUser = async () => {
@@ -74,17 +73,48 @@ function User() {
                       className="profile-btn mobile_disable" 
                       onMouseUp={() => {Send(); playFeature()}}
                     >Go to Wallet</button>
+                    <button className="profile-btn">
+                      <Rules
+                        modalTitle={"General Rules"}
+                        modalBody={generalRules}
+                      />
+                    </button>
+                    <button className="profile-btn mobile_disable" onMouseUp={() => {navigate('/withdraw'); playFeature()}}>Withdraw</button>
+                    <button className="profile-btn" onClick={ExitProfile}>Exit Profile</button>
                 </div>
             </div>
-            <div>    
-                <button className="profile-btn mobile_disable" onMouseUp={() => {navigate('/roulette'); playFeature()}}>Roulette</button>
-                <button className="profile-btn" onMouseUp={() => {navigate('/slotmachinies'); playFeature()}}>Slot Machinies</button>
-                <button className="profile-btn" onMouseUp={() => {navigate('/black'); playFeature()}}>Blackjack</button>
-                <button className="profile-btn" onMouseUp={() => {navigate('/baccarat'); playFeature()}}>Baccarat</button>
-                <button className="profile-btn mobile_disable" onMouseUp={() => {navigate('/withdraw'); playFeature()}}>Withdraw</button>
-                <button className="profile-btn" onClick={ExitProfile}>Exit Profile</button>
+            <div>
+                <h2>Available games</h2>    
+                <button className="select_game_btn mobile_disable" onMouseUp={() => {navigate('/roulette'); playFeature()}}>
+                  <img className="btn_img" src={require("./img/roulette.png")} title="Roulette" alt=""></img>
+                  Roulette
+                </button>
+                <button className="select_game_btn" onMouseUp={() => {navigate('/slotmachinies'); playFeature()}}>
+                  <img className="btn_img" src={require("./img/slot-machine.png")} title="Slot Machine" alt=""></img>
+                  &nbsp;&nbsp;Slots
+                </button>
+                <button className="select_game_btn" onMouseUp={() => {navigate('/black'); playFeature()}}>
+                  <img className="btn_img" src={require("./img/blackjack.png")} title="Blackjack" alt=""></img>
+                  Blackjack
+                </button>
+                <button className="select_game_btn" onMouseUp={() => {navigate('/baccarat'); playFeature()}}>
+                  <img className="btn_img" src={require("./img/baccarat.png")} title="Baccarat" alt=""></img>
+                  Baccarat
+                </button>
+                <button className="select_game_btn" onMouseUp={() => {navigate('/chess'); playFeature()}}>
+                  <img className="btn_img" src={require("./img/chess.png")} title="Chess" alt=""></img>
+                  &nbsp;&nbsp;Chess
+                </button>
+                <button className="select_game_btn mobile_disable" onMouseUp={() => {navigate('/rolldice'); playFeature()}}>
+                  <img className="btn_img" src={require("./img/craps.png")} title="Craps" alt=""></img>
+                  Craps
+                </button>
+                <button className="select_game_btn" onMouseUp={() => {navigate('/poker'); playFeature()}}>
+                  <img className="btn_img" src={require("./img/poker.png")} title="Poker" alt=""></img>
+                  Poker
+                </button>  
             </div>
-            <p>For all questions and suggestions, please contact the appropriate <a href="https://discord.gg/erYnAQf">discord</a> #casino.</p>
+            <p style={{paddingTop: "50px"}}>For all questions and suggestions, please contact the appropriate <a href="https://discord.gg/erYnAQf">discord</a> #games.</p>
         </div>
     );
 }

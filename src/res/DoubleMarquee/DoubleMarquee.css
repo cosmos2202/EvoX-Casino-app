@@ -1,0 +1,9 @@
+.marquee {
+    width: 80%;
+    white-space: nowrap;
+    color: aliceblue;
+    position: absolute;
+    left: 10%;
+    top: 1%;
+    font-size: 1rem;
+}

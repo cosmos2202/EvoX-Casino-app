@@ -1,18 +1,19 @@
 import './baccarat.css';
-import {Box, Card} from "@mui/material";
+import {Box} from "@mui/material";
 import { shades } from './theme';
 import { useState, useEffect } from 'react';
 import Chip from './components/chips';
 import { chipImages } from './components/chips';
 import { cardImages, backside } from './components/cardImages';
 import BetArea from './components/BetArea';
-import { useSpring, animated } from "react-spring";
 import CountingGrids from './components/countingrow';
 import { useNavigate } from "react-router-dom";
 import win from "./Sound/win.mp3";
 import loss from "./Sound/loss.mp3";
 import feature from "./Sound/feature.mp3";
 import card from "./Sound/card_delivery.mp3";
+import Rules from '../res/Rules/Rules';
+import {baccaratRules} from '../res/Rules/baccaratRules';
 
 var playerhit = false;
 var betmemory = [];
@@ -72,6 +73,7 @@ function Baccarat() {
   const [gridlocator, setglocator] = useState([0, 0, 1]);
   const [winmemory, setwinmem] = useState([]);
   const [token, setToken] = useState();
+  const [player, setPlayer] = useState();
 
   useEffect(() => {
     const getUser = async () => {
@@ -79,6 +81,7 @@ function Baccarat() {
       const userData = await response.json();
       setBalance(userData.result.balance);
       setToken(userData.result.token);
+      setPlayer(userData.result.nickname);
     };
     getUser();
   }, [])
@@ -234,6 +237,7 @@ function Baccarat() {
         setTimeout(() => {
           setBalance(balance + bounty);
           plusBalanceUser( token, bounty);
+          if (bounty >= 100) setWinners(player, bounty);
         }, 600);
       }
   
@@ -255,6 +259,7 @@ function Baccarat() {
           setTimeout(() => {
             setBalance(balance + bounty);
             plusBalanceUser( token, bounty);
+            if (bounty >= 100) setWinners(player, bounty);
           }, 600);
         }
         if (betvalueplayer.val > 0) {
@@ -321,6 +326,7 @@ function Baccarat() {
         setTimeout(() => {
           setBalance(balance + bounty);
           plusBalanceUser( token, bounty);
+          if (bounty >= 100) setWinners(player, bounty)
         }, 600);
       }
   
@@ -657,6 +663,21 @@ function Baccarat() {
     })
   }
 
+  async function setWinners (player, bet) {
+    await fetch('/api/data/setwinners', {
+      method: "POST",
+      body: JSON.stringify({
+        nickname: player,
+        amount: bet,
+        game: 'Baccarat',
+        bet: bet
+      }),
+      headers: {
+          "Content-type": "application/json"
+      }
+    })
+  }
+
   async function minusBalanceUser (token, balance) {
     await fetch('/api/data/minusbalance', {
       method: "POST",
@@ -945,12 +966,6 @@ function Baccarat() {
             <h5 style = {{margin: "0px 0px"}}>Undo</h5>
           </button>
         </Box>
-        <Box width = "50%" margin = "auto" className = {roundStarted ? "chipgoaway":"chipcomeback"}>
-          <button onClick={() => navigate('/user')} style = {{fontWeight: "normal", border: "1px solid whitesmoke"}}>
-            <h5 style = {{margin: "0px 0px"}}>Back to Profile</h5>
-          </button>
-        </Box>
-        
       </Box>
       <Box display = "flex" margin = "10px 20px" width = "90%" justifyContent = "space-between">
         <CountingGrids
@@ -959,6 +974,15 @@ function Baccarat() {
       </Box>
       
     </div>
+    <button className="profile-btn">
+      <Rules
+        modalTitle={"Baccarat Rules"}
+        modalBody={baccaratRules}
+      />
+    </button>
+    <button className="profile-btn" onClick={() => navigate('/user')} style = {{fontWeight: "normal", border: "1px solid whitesmoke"}}>
+            <h5 style = {{margin: "0px 0px"}}>Back to Profile</h5>
+          </button>
     </Box>
     
   );

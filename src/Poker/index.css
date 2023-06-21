@@ -1,0 +1,21 @@
+/* * {
+  border: 1px dotted black;
+} */
+
+@font-face {
+  font-family: Pokerface;
+  src: url('./assets/fonts/Poker.woff') format('woff');
+}
+
+/*body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: 'Contrail One', cursive, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url('./assets/images/woodgrain-large.jpg');
+  background-size: cover;
+  padding-top: 30px;
+  margin: 0 auto !important;
+}*/

@@ -1,0 +1,139 @@
+.dice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(5px + 2vmin);
+  color: white;
+}
+.dice .crapsBoard {
+    height: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background-size: contain;
+    object-fit: contain;
+    background-repeat: no-repeat;
+    background-image: url("./img/CrapsBoard_NoMulti.png");
+  }
+  
+  .dice .craps-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dice .craps-btn {
+    width: 139px;
+    height: 220px;
+    cursor: pointer;
+  }
+  
+  .dice .hardways-btn {
+    width: 167px;
+    height: 72px;
+    cursor: pointer;
+  }
+  
+  .dice .craps-dice {
+    height: 215px;
+    width: 836px;
+  }
+  
+  .dice .field-btn {
+    width: 836px;
+    height: 150px;
+    cursor: pointer;
+  }
+  
+  .dice .one-roll-btn {
+    width: 166px;
+    height: 75px;
+    cursor: pointer;
+  }
+  
+  .dice .one-long-roll-btn {
+    width: 332px;
+    height: 82px;
+    cursor: pointer;
+  }
+  
+  .dice .craps-btn:hover,
+  .dice .hardways-btn:hover,
+  .dice .field-btn:hover,
+  .dice .one-long-roll-btn:hover,
+  .dice .one-roll-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dice .craps-chip {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .dice .craps-middle-chip {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .dice .craps-rules {
+
+  }
+  
+  .dice .craps-die {
+    width: 100px;
+    height: 100px;
+    margin: 60px 40px;
+  }
+  
+  .dice .row_dice{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
+
+  .dice .row-center {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dice .chip_dice{
+    width: 70px;
+    height: 70px;
+    margin: 0px 10px;
+    cursor: pointer;
+  }
+
+  .dice .down-arrow {
+    width: 20px;
+    height: 50px;
+    margin: 20px 10px;
+  }
+
+  .dice .transparent-roll-img {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 5px 58px 8px 58px;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: auto;
+  }
+    
+  .text-overlay {
+    position: relative;
+  }
+  .dice .row-space-between {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .chip-selected {
+    box-shadow: 0px 0px 20px #ff0efb;
+    border-radius: 50%;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+  }

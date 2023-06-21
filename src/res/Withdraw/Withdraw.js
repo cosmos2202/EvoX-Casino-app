@@ -66,7 +66,7 @@ function Withdraw() {
                 }).then(res => res.json())
                 .then(json => {
                     copyToClipboard(json.data);
-                    showError('Successfully!' + '\n' + 'tx: ' + json.data + '\n' + 'The transaction number has been copied to the clipboard.');
+                    showError('Successfully!\ntx: ' + json.data + '\nThe transaction number has been copied to the clipboard.');
                     setTimeout(() => {
                         navigate('/user');
                     }, 10000);

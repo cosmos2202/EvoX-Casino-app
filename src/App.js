@@ -13,13 +13,18 @@ import Registration from "./res/pages/Setup/Registration";
 import User from "./res/pages/User/User";
 import BackgroundMelody from './Roulette/sound/Fon.mp3';
 import Baccarat from './Baccarat/Baccarat';
+import RollDice from "./RollDice/RollDice";
+import Poker from "./Poker/Poker";
+import DoubleMarquee from "./res/DoubleMarquee/DoubleMarquee";
+import { Chess as Self } from "./Chess/Chess"; 
 
 function App() {
-
+  const Chess = (Self);
   return (
     <div className="App">
       <Fon />
       <Logo />
+      <DoubleMarquee />
       <BackgroundMusic/>
       <Router>
         <Suspense fallback={<></>}>
@@ -33,6 +38,9 @@ function App() {
             <Route exact path="/slotmachinies" element={<SlotMachinies />} />
             <Route exact path="/black" element={<Black />} />
             <Route exact path="/baccarat" element={<Baccarat />} />
+            <Route exact path="/rolldice" element={<RollDice />} />
+            <Route exact path="/poker" element={<Poker />} />
+            <Route exact path="/chess" element={<Chess />} />
           </Routes>
         </Suspense>
       </Router>

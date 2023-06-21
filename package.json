@@ -1,13 +1,13 @@
 {
-    "name": "evox-casino-app",
+    "name": "evox-games-app",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@react-hook/window-size": "^3.1.1",
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
         "@mui/icons-material": "^5.11.0",
         "@mui/material": "^5.11.8",
+        "@react-hook/window-size": "^3.1.1",
         "jquery": "^3.6.4",
         "js-cookie": "^3.0.1",
         "lottie-web": "^5.10.2",
@@ -15,11 +15,16 @@
         "react": "^18.2.0",
         "react-confetti": "^6.1.0",
         "react-dom": "^18.2.0",
+        "react-double-marquee": "^1.1.0",
+        "react-modal": "^3.16.1",
         "react-router-dom": "^6.10.0",
         "react-scripts": "5.0.1",
         "react-spring": "^9.6.1",
+        "react-toastify": "^9.1.3",
         "sass": "^1.57.1",
         "sha256": "^0.2.0",
+        "socket.io": "^4.6.2",
+        "styled-components": "^6.0.0-rc.3",
         "web-vitals": "^2.1.4"
     },
     "scripts": {

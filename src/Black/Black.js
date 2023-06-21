@@ -6,6 +6,8 @@ import { deckOfCards } from './Helpers/Data';
 import win from "./Sound/win.mp3";
 import loss from "./Sound/loss.mp3";
 import feature from "./Sound/feature.mp3";
+import Rules from '../res/Rules/Rules';
+import { blackjackRules } from '../res/Rules/blackjackRules';
 
 function Black() {
   const [winner, setWinner] = useState();
@@ -167,6 +169,21 @@ function Black() {
       })
     }
 
+    async function setWinners (player, bet) {
+      await fetch('/api/data/setwinners', {
+        method: "POST",
+        body: JSON.stringify({
+          nickname: player,
+          amount: bet,
+          game: 'BlackJack',
+          bet: bet
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+      })
+    }
+
     async function minusBalanceUser (token, balance) {
       await fetch('/api/data/minusbalance', {
         method: "POST",
@@ -182,6 +199,7 @@ function Black() {
     if (winner) {
       if (winner === player) {
         plusBalanceUser(token, bet)
+        if (bet >= 100) setWinners(player, bet)
         playWin()
       } else if (winner === 'Dealer') {
         minusBalanceUser(token, bet)
@@ -207,7 +225,6 @@ function Black() {
           <Cards
             cards={dealerCards}
           />
-          <div className='player_name'>{player}</div>
           <Cards
             cards={playerCards}
           />
@@ -215,6 +232,12 @@ function Black() {
         <div>
           <button className="profile-btn" onClick={() => {hit(); playFeature()}} disabled={!gameStarted}>Hit</button>
           <button className="profile-btn" onClick={() => {stay(); playFeature()}} disabled={!gameStarted}>Stay</button>
+          <button className="profile-btn">
+            <Rules
+              modalTitle={"Blackjack Rules"}
+              modalBody={blackjackRules}
+            />
+          </button>
         </div>
       </section>
     </div>

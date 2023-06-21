@@ -4,10 +4,12 @@ import React, {useState, useEffect} from 'react';
 import fruit from "./sound/fruit.mp3";
 import button from "./sound/button.mp3";
 import Win from "./sound/win.mp3";
+import Rules from "../res/Rules/Rules";
+import { slotsRules } from "../res/Rules/slotsRules";
 
 const SlotMachinies = () => {
 
-    const [user, setUser] = useState();
+    const [player, setPlayer] = useState();
     const navigate = useNavigate();
     const [spin, setSpin] = useState(false);
     const [ring1, setRing1] = useState();
@@ -25,7 +27,7 @@ const SlotMachinies = () => {
       (async () => {
         const response = await fetch('/api/data/getuser');
         const userData = await response.json();
-        setUser(userData.result.nickname);
+        setPlayer(userData.result.nickname);
         setBalance(userData.result.balance);
         setToken(userData.result.token);
         setJackpot(userData.result.jackpot_slots)
@@ -312,6 +314,7 @@ const SlotMachinies = () => {
    useEffect(() => {
     if(price > 0 && price < 5) {
       plusBalanceUser(token, winning);
+      if (winning >= 100) setWinners(player, winning)
       playWin();
     } 
    }, [price])
@@ -350,6 +353,21 @@ const SlotMachinies = () => {
         })
     }
 
+    async function setWinners (player, bet) {
+      await fetch('/api/data/setwinners', {
+        method: "POST",
+        body: JSON.stringify({
+          nickname: player,
+          amount: bet,
+          game: 'Slot Machinies',
+          bet: bet
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+      })
+    }
+
     async function setJackpotAmount(token, jackpotAmount) {
       await fetch('/api/data/setjackpot', {
         method: 'POST',
@@ -364,29 +382,37 @@ const SlotMachinies = () => {
     }
 
     return (
-        <div className="fullSlot">
-            <h1 className="casinoName">EvoX Casino</h1>
-            <h1 className="price">{"Jackpot: " + ((jackpot * 100) / 100).toFixed(2) + " EvoX"}</h1>
-            <div className="slot">
-                <div className="row">
-                    {row1()}
-                </div>
-                <div className="row">
-                    {row2()}
-                </div>
-                <div className="row">
-                    {row3()}
-                </div>
-            </div>
-            <h1 className="price">
-                {premio()}
-            </h1>
-            <div className="slotFoot">
-                <input type="number" onChange={(e) => numChecker(e)} className="betInput" placeholder="set bet"></input>
-                <button className="spinButton" onClick={() => {play(); playButton()}}>Spin</button>
-            </div>
-            <h1 className="price">Available cash: {((balance * 100) / 100).toFixed(2)} EvoX</h1>
-            <button onClick={() => {navigate("/user")}} className="buyMoreButton">back to profile</button>
+        <div>
+          <div className="fullSlot">
+              <h1 className="gamesName">EvoX Games</h1>
+              <h1 className="price">{"Jackpot: " + ((jackpot * 100) / 100).toFixed(2) + " EvoX"}</h1>
+              <div className="slot">
+                  <div className="row">
+                      {row1()}
+                  </div>
+                  <div className="row">
+                      {row2()}
+                  </div>
+                  <div className="row">
+                      {row3()}
+                  </div>
+              </div>
+              <h1 className="price">
+                  {premio()}
+              </h1>
+              <div className="slotFoot">
+                  <input type="number" onChange={(e) => numChecker(e)} className="betInput" placeholder="set bet"></input>
+                  <button className="spinButton" onClick={() => {play(); playButton()}}>Spin</button>
+              </div>
+              <h1 className="price">Available cash: {((balance * 100) / 100).toFixed(2)} EvoX</h1>
+          </div>
+          <button onClick={() => {navigate("/user")}} className="profile-btn">Back</button>
+          <button className="profile-btn">
+            <Rules
+              modalTitle={"Slot Rules"}
+              modalBody={slotsRules}
+            />
+          </button>
         </div>  
     )
 }

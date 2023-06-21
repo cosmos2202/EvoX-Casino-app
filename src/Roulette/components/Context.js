@@ -90,13 +90,15 @@ const Context = (props) => {
   const [winnerEffect, setWinnerEffect] = useState("none")     // won or lost animation state
   const [turn, setTurn] = useState(0)                          // Turn number
   const [token, setToken] = useState()
+  const [player, setPlayer] = useState()
 
   useEffect(() => {
     const getUser = async () => {
       const response = await fetch('/api/data/getuser');
       const userData = await response.json();
       setBalance(userData.result.balance);
-      setToken(userData.result.token)
+      setToken(userData.result.token);
+      setPlayer(userData.result.nickname)
     };
     getUser();
  }, [])
@@ -263,7 +265,8 @@ const Context = (props) => {
     if (profit > 0) {
       setWinnerEffect("gained")
       playWin()
-      plusBalanceUser (token, Number(profit.toFixed(2)))
+      plusBalanceUser (token, Number(profit.toFixed(2)));
+      if (Number(profit.toFixed(2)) >= 100) setWinners(player, Number(profit.toFixed(2)))
     } else {
       setWinnerEffect("lost")
       playLoss()
@@ -514,6 +517,20 @@ const Context = (props) => {
 
     if (animation) poof();
   });
+
+  async function setWinners (player, bet) {
+    await fetch('/api/data/setwinners', {
+      method: "POST",
+      body: JSON.stringify({
+        nickname: player,
+        amount: bet,
+        game: 'Roulette'
+      }),
+      headers: {
+          "Content-type": "application/json"
+      }
+    })
+  }
 
   async function plusBalanceUser (token, balance) {
       await fetch('/api/data/plusbalance', {

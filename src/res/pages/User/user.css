@@ -32,6 +32,9 @@
 h1 {
     margin: 30px;
 }
+h2 {
+  color: rgb(160, 160, 160);
+}
 
 @media screen and (max-width: 920px) { 
   h1 {
@@ -50,4 +53,12 @@ h1 {
   .mobile_disable {
     display: none;
   }
+}
+
+.btn_img {
+  max-width: 50px;
+  max-height: 50px;
+}
+.select_game_btn {
+  margin: 10px;
 }

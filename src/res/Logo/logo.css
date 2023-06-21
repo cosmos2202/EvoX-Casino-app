@@ -126,12 +126,15 @@
         -webkit-transform:rotateY(360deg)
     }
 }
-.coin .front{
-    background-image:url('../image/coin-front.png')
+.logo_evox{
+    position: absolute;
+    left: 25px;
+    top: 20px;
+    width: 250px;
+    height: 100px;
+    background-image:url('./logo-all.svg')
 }
-.coin .back{
-    background-image:url('../image/coin-back.png')
-}
+
 @keyframes shine{
     0%,15%{
         transform:translateY(600px) rotate(-40deg);

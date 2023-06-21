@@ -15,7 +15,7 @@ function Main() {
     return (
         <>
             <div className="ui__form__header  setup-page__header__login">
-                <h3>EvoX Casino</h3>
+                <h3>EvoX Games</h3>
                 <p>You need to be registered for access.</p>
                 <div>
                     <button className="ui__submit-btn" onClick={()=>{navigate("/auth"); playFeature()}}>Log In</button>

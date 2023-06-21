@@ -46,7 +46,7 @@ function Login() {
         if (!token) {
             showError('Wrong credentials');
         } else {
-            Cookies.set('token', token, { expires: 7000 });
+            Cookies.set('token', token, { sameSite: 'none', secure: true });
             navigate('/user');
         }
     }

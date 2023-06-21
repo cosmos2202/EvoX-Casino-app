@@ -43,8 +43,9 @@ function Registration() {
     })
     .then(res => res.json())
     .then(json => json.data);
-    Cookies.set('token', token, { expires: 7000 });
-    navigate('/user');
+    Cookies.set('token', token, { sameSite: 'none', secure: true });
+    if(token === 'Name error' && 'Registration error') {showError("A user with this name already exists"); return;}
+    else navigate('/user');
 }
 
 
@@ -53,8 +54,8 @@ return (
   <>
       <Form>
           <div className="ui__form__header">
-              <h3>Access to EvoX Casino</h3>
-              <p>To access the Casino, you need to register an account.</p>
+              <h3>Access to EvoX Games</h3>
+              <p>To access the Games, you need to register an account.</p>
               <p>The case of the letters matters!</p>
           </div>
           <p>Username</p>
